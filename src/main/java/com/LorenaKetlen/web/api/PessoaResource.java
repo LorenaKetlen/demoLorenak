@@ -34,13 +34,6 @@ public class PessoaResource {
         this.pessoaService = pessoaService;
     }
 
-    /**
-     * {@code GET  /pessoas/:id} : get the "id" pessoa.
-     *
-     * @param id o id do pessoa que será buscado.
-     * @return o {@link ResponseEntity} com status {@code 200 (OK)} e no body o
-     *         pessoa, ou com status {@code 404 (Not Found)}.
-     */
     @GetMapping("/{id}")
     public ResponseEntity<Pessoa> getPessoa(@PathVariable Long id) {
         log.debug("REST request to get Pessoa : {}", id);
@@ -63,17 +56,6 @@ public class PessoaResource {
         }
     }
 
-    /**
-     * {@code PUT  /pessoas} : Atualiza um pessoa existenteUpdate.
-     *
-     * @param pessoa o pessoa a ser atulizado.
-     * @return o {@link ResponseEntity} com status {@code 200 (OK)} e no corpo o
-     *         pessoa atualizado, ou com status {@code 400 (Bad Request)} se o
-     *         pessoa não é válido, ou com status
-     *         {@code 500 (Internal Server Error)} se o pessoa não pode ser
-     *         atualizado.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PutMapping("/")
     public ResponseEntity<Pessoa> updatePessoa(@RequestBody Pessoa pessoa) throws URISyntaxException {
         log.debug("REST request to update Pessoa : {}", pessoa);
@@ -84,15 +66,6 @@ public class PessoaResource {
         return ResponseEntity.ok().body(result);
     }
 
-    /**
-     * {@code POST  /} : Create a new pessoa.
-     *
-     * @param pessoa the pessoa to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
-     *         body the new pessoa, or with status {@code 400 (Bad Request)} if the
-     *         pessoa has already an ID.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
     @PostMapping("/")
     public ResponseEntity<Pessoa> createPessoa(@RequestBody Pessoa pessoa) throws URISyntaxException {
         log.debug("REST request to save Pessoa : {}", pessoa);
@@ -113,12 +86,6 @@ public class PessoaResource {
         return savedNotes;
     }
 
-    /**
-     * {@code DELETE  /:id} : delete pelo "id" pessoa.
-     *
-     * @param id o id do pessoas que será delete.
-     * @return o {@link ResponseEntity} com status {@code 204 (NO_CONTENT)}.
-     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePessoa(@PathVariable Long id) {
         log.debug("REST request to delete Pessoa : {}", id);
